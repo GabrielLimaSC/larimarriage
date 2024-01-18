@@ -93,7 +93,7 @@ export default function Header()
                     </li>
 
                     <li className="mr-4 lg:mr-8 hove:text-[#000000]">
-                        <Link href="/home">Confirmar presenca</Link>
+                        <Link href="/home">Confirmar presença</Link>
                     </li>
 
                 </ul>
@@ -117,18 +117,48 @@ export default function Header()
                     {/* Smaller screens - Navbar links */}
                     <div className="w-full">
 
-                        <ul className="uppercase font-bold text-2xl">
+                        <ul className={`${montserrat.className} uppercase lg:text-[12px] text-slate-800`}>
 
-                            <li onClick={handleSmallerScreenNavigation} className="py-5 hover:text-[#000000] cursor-pointer">
-                                <Link href="/">Paginas</Link>
+                            <li className="relative px-3 mr-4 lg:mr-8 uppercase">
+                                <button onClick={toggleDropdown} className="flex items-center hover:text-[#000000] uppercase">
+                                    Páginas
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="6" viewBox="0 0 11 6"
+                                        className={`ml-1 fill-current text-gray-600 menu-dropdown__icon ${isDropdownOpen ? styles['menu-dropdown__icon--up'] : styles['menu-dropdown__icon--down']}`}>
+                                        <path fillRule="evenodd" d="M5.95.335l4.717 4.912a.302.302 0 0 1 0 .416.274.274 0 0 1-.4 0L5.75.961 1.234 5.663a.274.274 0 0 1-.4 0 .303.303 0 0 1-.084-.207c0-.074.027-.15.084-.207L5.55.337A.274.274 0 0 1 5.95.335z"></path>
+                                    </svg>
+                                </button>
+
+                                <CSSTransition 
+                                    in={isDropdownOpen} 
+                                    timeout={300} 
+                                    classNames={{
+                                        enter: styles['dropdown-enter'],
+                                        enterActive: styles['dropdown-enter-active'],
+                                        exit: styles['dropdown-exit'],
+                                        exitActive: styles['dropdown-exit-active']
+                                    }}
+                                    unmountOnExit
+                                    >
+                                        <ul className=" absolute left-0 mt-2 py-2 w-40 bg-white drop-shadow-2xl">
+                                            <br />
+                                            <li className="py-1 px-4 hover:bg-gray-100">
+                                                <Link href="/pagina1" >Página 1</Link>
+                                            </li>
+                                            <br />
+                                            <li className="py-1 px-4 hover:bg-gray-100">
+                                                <Link href="/pagina2">Página 2</Link>
+                                            </li>
+                                            {/* ... */}
+                                        </ul>
+                                    </CSSTransition>
                             </li>
 
-                            <li onClick={handleSmallerScreenNavigation} className="py-5 hover:text-[#000000] cursor-pointer">
+                            <li onClick={handleSmallerScreenNavigation} className="flex items-center uppercase py-3 px-3  cursor-pointer">
                                 <Link href="/">Presentes</Link>
                             </li>
 
-                            <li onClick={handleSmallerScreenNavigation} className="py-5 hover:text-[#000000] cursor-pointer">
-                                <Link href="/">Confirmar presenca</Link>
+                            <li onClick={handleSmallerScreenNavigation} className="flex items-center uppercase py-2 px-3 cursor-pointer">
+                                <Link href="/">Confirmar presença</Link>
                             </li>
 
                         </ul>
