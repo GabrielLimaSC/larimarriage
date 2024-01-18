@@ -18,9 +18,9 @@ export default async function RootLayout({ children }) {
   wait(3000)
   return (
     <html lang="pt-br">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-white`}>
         <Header/>
-        {children}
+        {/* CLAUDIO ISSO TAVA BUGANDO O BACKGROUND E QUERIA TESTAR ALGO, QUANDO A GENTE FOR CALL RESOLVER ISSO {children}*/}
       </body>
     </html>
   )
